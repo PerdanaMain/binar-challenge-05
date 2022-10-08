@@ -1,0 +1,103 @@
+*{
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+/* Vertical Navbar */
+.vertical-navbar{
+  position: flex;
+  margin-left: -12px;
+  width: 85px;
+  box-sizing: border-box;
+  /* Primary/DarkBlue/04 */
+  background: #0D28A6;
+}
+.vertical-navbar ul{
+  margin-left: -15px;
+}
+.vertical-navbar ul li{
+  margin-bottom: 5px;
+  
+}
+.vertical-navbar ul li a{
+  text-decoration: none;
+  color: white;
+}
+.vertical-navbar ul li a img{
+  margin-left: 12px;
+}
+.vertical-navbar .nav .nav-item .nav-link{
+  /* Administrator */
+  box-sizing: border-box;
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.vertical-navbar .nav .nav-item .nav-link:hover{
+  background: rgba(255, 255, 255, 0.3);
+}
+/* End Vertical Navbar */
+
+/* Sidebar */
+.sidebar{
+  background-color:   #FFFFFF;
+  width: 230px;
+  margin-left: -40px;
+  padding: 9px 0px 0px 20px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.col-md-2.sidebar-hide{
+  transition: 0.3s;
+  width: 0;
+  display: none;
+}
+.sidebar a{
+  text-decoration: none;
+}
+.sidebar .main-sidebar .list-item .description{
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: black;
+}
+.sidebar .main-sidebar .list-item{
+  padding: 11px 24px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.sidebar .main-sidebar .list-item:hover{
+  background-color: #CFD4ED;
+  transition: all ease-in .2s;
+}
+
+/* End Sidebar */
+
+/* Header */
+.header{
+  background-color: #FFFFFF;
+}
+
+/* ? Toogle Menu */
+#menu-button{
+  width: 32px;
+  position: absolute;
+  overflow: hidden;
+}
+#menu-label{
+  position: relative;
+  display: block;
+  height: 20px;
+  cursor: pointer;
+}
+#menu-checkbox{
+  display: none;
+}
+/* ? End Toogle Menu */
+/* End Header */
