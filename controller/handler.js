@@ -9,35 +9,36 @@ const loadCars = async (req, res) => {
   });
 };
 
-const loadView = async (req, res) => {
+const viewSearch = async (req, res) => {
+  const data = await Cars.findAll({
+    where: { size: req.params.size },
+  });
+  return res.render("list", {
+    layout: "layouts/main-layout",
+    title: "List Car",
+    data,
+  });
+};
+
+const viewCreate = (req, res) => {
+  return res.render("create", {
+    layout: "layouts/main-layout",
+    title: "Create New Car",
+    info: undefined,
+  });
+};
+
+const viewEdit = async (req, res) => {
   const id = req.params.id;
-  const size = req.params.size;
-  if (size) {
-    const data = await Cars.findAll({
-      where: { size },
-    });
-    return res.render("list", {
-      layout: "layouts/main-layout",
-      title: "List Car",
-      data,
-    });
-  } else if (id) {
-    const data = await Cars.findOne({
-      where: { id },
-    });
-    return res.render("update", {
-      layout: "layouts/main-layout",
-      title: "Update Car",
-      data,
-      info: undefined,
-    });
-  } else {
-    return res.render("create", {
-      layout: "layouts/main-layout",
-      title: "Create New Car",
-      info: undefined,
-    });
-  }
+  const data = await Cars.findOne({
+    where: { id },
+  });
+  return res.render("update", {
+    layout: "layouts/main-layout",
+    title: "Update Car",
+    data,
+    info: undefined,
+  });
 };
 
 const createCar = async (req, res) => {
@@ -85,7 +86,9 @@ const deleteCar = async (req, res) => {
 };
 module.exports = {
   loadCars,
-  loadView,
+  viewEdit,
+  viewCreate,
+  viewSearch,
   createCar,
   updateCar,
   deleteCar,

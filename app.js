@@ -6,7 +6,9 @@ const expressLayouts = require("express-ejs-layouts");
 // ? Call the directory needs
 const {
   loadCars,
-  loadView,
+  viewEdit,
+  viewCreate,
+  viewSearch,
   createCar,
   updateCar,
   deleteCar,
@@ -38,10 +40,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // ? Routes
 app.get("/", loadCars);
-app.get("/:size", loadView);
-app.get("/create", loadView);
-app.get("/update/:id", loadView);
+app.get("/create", viewCreate);
+app.get("/update/:id", viewEdit);
 app.get("/delete/:id", deleteCar);
+app.get("/:size", viewSearch);
 
 app.post("/create", upload.single("up-photo"), createCar);
 app.post("/update/:id", upload.single("edited-photo"), updateCar);
