@@ -1,12 +1,35 @@
 const { Cars } = require("../models");
 
 const loadCars = async (req, res) => {
-  const data = await Cars.findAll({});
-  return res.render("list", {
-    layout: "layouts/main-layout",
-    title: "List Car",
-    data,
-  });
+  const search = req.query.s;
+  console.log(search);
+  if (search) {
+    console.log("program lewat sini");
+    const data = await Cars.findAll({
+      where: { name: search },
+    });
+    if (data.length == 0) {
+      return res.render("404", {
+        layout: "layouts/main-layout",
+        title: "Not Found",
+        data,
+        info: "404 | Data Not Found",
+      });
+    } else {
+      return res.render("list", {
+        layout: "layouts/main-layout",
+        title: "List Car",
+        data,
+      });
+    }
+  } else {
+    const data = await Cars.findAll({});
+    return res.render("list", {
+      layout: "layouts/main-layout",
+      title: "List Car",
+      data,
+    });
+  }
 };
 
 const viewSearch = async (req, res) => {
